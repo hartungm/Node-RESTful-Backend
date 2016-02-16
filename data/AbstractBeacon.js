@@ -1,5 +1,8 @@
-module.exports = class AbstractBeacon{
+var CoreObject = require('./CoreObject.js');
+
+module.exports = class AbstractBeacon extends CoreObject {
     constructor() {
+        super()
         this.sqlStrings = {
             select: 'select * from nodetest;',
             insert: 'insert into people set ?;'
@@ -8,9 +11,5 @@ module.exports = class AbstractBeacon{
             fName: 'Carlron',
             lName: 'Bennett'
         }
-    }
-    
-    printdata() {
-        console.log(this.data);
     }
 }
