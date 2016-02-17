@@ -14,11 +14,10 @@ module.exports = class Beacon extends AbstractBeacon{
         };
         this.printdata();
     }
-    
+
     printdata() {
         console.log(this.someField);
-        var db = new CoreDB();
-        db.dbExecute(this.sqlStrings['insert'], this.data);
-        db.dbAccess(this.sqlStrings['select']);
+        this.save();
+        this.load();
     }
-}
+};
