@@ -1,4 +1,4 @@
-var CoreObject = require('./CoreObject.js');
+var CoreObject = require('./CoreObject');
 
 module.exports = class AbstractBeacon extends CoreObject {
     constructor() {
