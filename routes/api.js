@@ -4,7 +4,7 @@ var mysql = require('mysql');
 var Beacon = require('../data/Beacon');
 
 router.get('/', function(req, res) {
-    res.send('This is your API base route'); 
+    res.send('This is your API base route');
 });
 
 module.exports = router;
