@@ -17,7 +17,8 @@ module.exports = class Beacon extends AbstractBeacon{
 
     printdata() {
         console.log(this.someField);
-        this.save();
+        this.id = 4;
+        //this.save();
         this.load();
     }
 };

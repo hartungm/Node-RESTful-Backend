@@ -12,15 +12,28 @@ module.exports = class CoreObject {
     }
 
     saveCallback(err, result) {
-        if (!err && !this.id) {
-            this.id = result.id;
-        }
+        console.log('in the save callback');
+        console.log(err);
+        console.log(result);
+        console.log(this);
+        // if (!err && !this.id && result) {
+        //     console.log(this.id);
+        //     this.id = result.insertId;
+        // } this is undefined here. WTF?
     }
 
     loadCallback(err, result) {
-        if (!err) {
-            this.data = result; //FIXME this isn't quite right (ie, it'll probably have id)
-            this.id = result.id;
+        console.log('in the load callback');
+        console.log(err);
+        console.log(result);
+        console.log(result[0]);
+        console.log(result[0].fName);
+        if (!err && result) {
+            console.log(this);
+            //Carlton, I need some help with JS namespaces.  THIS is always undefined..wtf?
+            // this.data = result[0]; //FIXME this isn't quite right (ie, it'll probably have id)
+            // this.id = result[0].id;
+            // delete this.data.id;
         }
     }
 
@@ -34,7 +47,7 @@ module.exports = class CoreObject {
     }
 
     load() {
-        this.db.load(this.constructor.name, this.loadCallback);
+        this.db.load(this.constructor.name, this.id, this.loadCallback);
     }
 
     delete() {

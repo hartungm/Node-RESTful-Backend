@@ -72,8 +72,8 @@ module.exports = class CoreDB {
         this.dbExecuteWithData('INSERT INTO '+table+' SET ?;', data, callback);
     }
 
-    load(table, callback) {
-        this.dbExecute('SELECT * FROM '+table+';', callback);
+    load(table, id, callback) {
+        this.dbExecute('SELECT * FROM '+table+' WHERE id = '+id+';', callback);
     }
 
     update(table, data, callback, id) {
