@@ -16,4 +16,4 @@ app.listen(3000);
 console.log('API running on port 3000');
 
 // REMOVE THIS EVENTUALLY
-var someBeacon = new Beacon();
+//var someBeacon = new Beacon();

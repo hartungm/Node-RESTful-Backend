@@ -11,6 +11,28 @@ module.exports = class CoreObject {
         this.someField = 'uhfdskj';
     }
 
+    save() {
+        var table = this.constructor.name;
+        if (this.id) {
+            this.db.update(table, this.data, this.saveCallback, this.id);
+        } else {
+            this.db.create(table, this.data, this.saveCallback);
+        }
+    }
+
+    load() {
+        this.db.load(this.constructor.name, this.id, this.loadCallback);
+    }
+
+    delete() {
+        this.db.delete(this.constructor.name, this.id, null);
+    }
+
+    stringify() {
+        return "{" + this.constructor.name +
+                ": {hey, it worked}}";
+    }
+
     saveCallback(err, result) {
         console.log('in the save callback');
         console.log(err);
@@ -35,23 +57,6 @@ module.exports = class CoreObject {
             // this.id = result[0].id;
             // delete this.data.id;
         }
-    }
-
-    save() {
-        var table = this.constructor.name;
-        if (this.id) {
-            this.db.update(table, this.data, this.saveCallback, this.id);
-        } else {
-            this.db.create(table, this.data, this.saveCallback);
-        }
-    }
-
-    load() {
-        this.db.load(this.constructor.name, this.id, this.loadCallback);
-    }
-
-    delete() {
-        this.db.delete(this.constructor.name, this.id, null);
     }
 
 };
