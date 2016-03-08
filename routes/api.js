@@ -21,10 +21,14 @@ router.get('/Beacon', function(req, res) {
             console.log("Object Not Found");
             res.sendStatus(404);
         }
-        var sendObj = beacon.stringify();
-        console.log("Retrieval for Beacon id " + id + " successful.");
-        console.log("Sending: " + sendObj);
-        res.send(sendObj);
+        console.log(beacon.data);
+        // var sendObj = beacon.stringify();
+        // console.log("Retrieval for Beacon id " + id + " successful.");
+        // console.log("Sending: " + sendObj);
+        // res.send(sendObj);
+        // beacon.data = null;
+        delete beacon.db;
+        res.send(beacon);
     }
 });
 

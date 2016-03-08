@@ -21,7 +21,8 @@ module.exports = class CoreObject {
     }
 
     load() {
-        this.db.load(this.constructor.name, this.id, this.loadCallback);
+        this.db.load(this.constructor.name, this.id, this.loadCallback.bind(this));
+        //TODO think about caching the bound callback somehow
     }
 
     delete() {
